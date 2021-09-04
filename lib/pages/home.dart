@@ -1,6 +1,5 @@
-import 'dart:developer';
-
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:ecommerce/pages/product.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -11,9 +10,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  _cartPressed() {
-    log('you clicked the cart icon');
-  }
+  _cartPressed() {}
 
   List<dynamic> _listItems = [
     {'title': 'Home', 'icon': Icons.home},
@@ -44,11 +41,7 @@ class _HomePageState extends State<HomePage> {
                     decoration: InputDecoration.collapsed(hintText: 'Search'),
                   ),
                 ),
-                IconButton(
-                    onPressed: () {
-                      log(_searchController.text);
-                    },
-                    icon: Icon(Icons.search))
+                IconButton(onPressed: () {}, icon: Icon(Icons.search))
               ],
             ),
           ),
@@ -160,6 +153,24 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ))
                   .toList(),
+            ),
+          ),
+          Container(
+            height: 120,
+            margin: EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              image: DecorationImage(
+                image: AssetImage('assets/slider/1.png'),
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+          Container(
+            height: 260,
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              children: List.generate(10, (index) => index).map((e) => ProductWidget(index: e)).toList(),
             ),
           )
         ],
